@@ -218,7 +218,7 @@
                 "Em là niềm vui lớn nhất của anh!",
                 "Chúc em yêu quý luôn hạnh phúc!"
             ],
-            icons: ["♥", "💖", "🌟", "😊", "❤️", "💕"],
+            icons: ["♥", "💖", "🌟", "😊", "❤️", "�15"],
             colors: {
                 love: "#ff6b9d",
                 birthday: "#4ecdc4",
@@ -277,83 +277,23 @@
             const audio = document.getElementById('galaxyAudio');
             audio.src = galaxyData.song.startsWith('http') ? galaxyData.song : `songs/${galaxyData.song}`;
             audio.loop = true;
-            audio.preload = 'metadata';
+            audio.preload = 'auto';
             audio.volume = 0.7;
 
-            let audioInitialized = false;
-
-            async function initAudioOnFirstInteraction() {
-                if (audioInitialized) return;
-                try {
-                    await audio.load();
-                    await audio.play();
-                    audioInitialized = true;
-                } catch (error) {
-                    showManualPlayButton();
-                }
-            }
-
-            const interactionEvents = ['touchstart', 'click'];
-            interactionEvents.forEach(event => {
-                document.addEventListener(event, initAudioOnFirstInteraction, { once: true, passive: true });
+            // Attempt to play audio immediately
+            audio.load();
+            audio.play().catch(error => {
+                console.error('Autoplay failed:', error);
+                showAudioError();
             });
 
             audio.addEventListener('error', showAudioError);
         }
 
-        function showManualPlayButton() {
-            const existingButton = document.getElementById('manualPlayButton');
-            if (existingButton) return;
-
-            const button = document.createElement('button');
-            button.id = 'manualPlayButton';
-            button.innerHTML = '🎵 Phát';
-            button.style.cssText = `
-                position: fixed;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 1000;
-                background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
-                color: white;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 25px;
-                font-family: 'Orbitron', sans-serif;
-                font-weight: 600;
-                cursor: pointer;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-                animation: pulse 2s infinite;
-            `;
-
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes pulse {
-                    0% { transform: translateX(-50%) scale(1); }
-                    50% { transform: translateX(-50%) scale(1.05); }
-                    100% { transform: translateX(-50%) scale(1); }
-                }
-            `;
-            document.head.appendChild(style);
-
-            button.addEventListener('click', async () => {
-                try {
-                    const audio = document.getElementById('galaxyAudio');
-                    await audio.play();
-                    button.remove();
-                } catch (error) {
-                    button.textContent = '❌ lỗi phát';
-                    button.style.background = '#ff4757';
-                }
-            });
-
-            document.body.appendChild(button);
-        }
-
         function showAudioError() {
             const errorDiv = document.createElement('div');
             errorDiv.id = 'audioError';
-            errorDiv.innerHTML = '✧';
+            errorDiv.innerHTML = '✧ Lỗi phát nhạc';
             errorDiv.style.cssText = `
                 position: fixed;
                 top: 20px;
