@@ -24,6 +24,7 @@
             -ms-user-select: none;
             user-select: none;
             background-color: #000;
+            touch-action: none;
         }
 
         body {
@@ -201,10 +202,11 @@
         <p>Link này có thể đã hết hạn hoặc không tồn tại.</p>
         <a href="index.html" class="back-home">🏠 Về trang chủ</a>
     </div>
-
     <div class="container" id="galaxy"></div>
-
-    <audio id="galaxyAudio" controls style="display:none"></audio>
+    <audio id="galaxyAudio" style="display:none" autoplay hidden> 
+        <source src="song.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ thẻ audio.
+    </audio>
 
     <script type="module">
         const demoGalaxyData = {
@@ -216,9 +218,13 @@
                 "Luôn mỉm cười nha",
                 "Chúc Em chuẩn bị đạt mọi ước mơ! 💖",
                 "Em là niềm vui lớn nhất của anh!",
-                "Chúc em yêu quý luôn hạnh phúc!"
+                "Chúc em yêu quý luôn hạnh phúc!",
+                "Anh 2 luôn yêu Trọng",
+                "Hugo vẫn luôn bên cạnh em!",
+                "Yêu lắm nha! 💕",
+
             ],
-            icons: ["♥", "💖", "🌟", "😊", "❤️", "�15"],
+            icons: ["♥", "💖", "🌟", "😊", "❤️"],
             colors: {
                 love: "#ff6b9d",
                 birthday: "#4ecdc4",
@@ -235,14 +241,21 @@
                 "image/6.png",
                 "image/7.png",
                 "image/8.png",
+                "image/9.png",
+                "image/10.png",
+                "image/11.png",
+                "image/12.png",
+                "image/13.png",
+                "image/14.png",
             ],
-            song: "https://rr2---sn-8qj-nbo6y.googlevideo.com/videoplayback?expire=1748797245&ei=3TI8aNqoEvOP1d8P-ceRgQk&ip=2402%3A800%3A6295%3A527%3A6c7f%3A2570%3A2f94%3A77f4&id=o-ALSYCDP_qgHe9nKSR_X3WYbz9q8Sy4Nqj_Yhd0SJ5n5W&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&gcr=vn&bui=AY1jyLMClohYXDguQ0A-Ojd7gIB4COG2vzEEE6_OD_CAzp_OUJKmxP0kzMsPDPzTCowTvq2Ti2U_w2Aw&vprv=1&svpuc=1&mime=video%2Fmp4&ns=iuJdjLE7v7p4QlXFtBD_wVEQ&rqh=1&gir=yes&clen=16205665&ratebypass=yes&dur=255.094&lmt=1748500478465693&lmw=1&c=TVHTML5&sefc=1&txp=4538534&n=4uYGGQ6tJenT3Q&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIgKqLRO3jepESF8m5adUtnXNOfMF5jFZx_IYMl5IS5fhACIQDTIS5tZC89T_0RFy54UCFKE7jzvWzbprbuFNm0zHILZw%3D%3D&title=Ph%C3%A9p%20M%C3%A0u%20(%C4%90%C3%A0n%20C%C3%A1%20G%E1%BB%97%20OST)%20-%20Mounter%20x%20MAYDAYs%2C%20Minh%20T%E1%BB%91c%20%7C%20Official%20MV&rm=sn-19u2e7e&rrc=79,104&fexp=24350590,24350737,24350827,24350961,24351173,24351316,24351318,24351495,24351528,24351594,24351638,24351658,24351661,24351662,24351759,24351789,24351864,24351907,24352018,24352020,24352187&req_id=fd4e5a8eeb19a3ee&rms=rdu,au&redirect_counter=2&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1748776552,&mh=Av&mip=113.172.91.208&mm=29&mn=sn-8qj-nbo6y&ms=rdu&mt=1748775153&mv=u&mvi=2&pl=27&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=APaTxxMwRQIhAJGNFy5dB4pYpIo8LEXpgCY_fBXpnugrurhVO162Mae6AiAdcT3hXmEVHe7tGB8UIQPjZnLDiSZH8t5qdaVOGl0yFQ%3D%3D",
+            song: "song.mp3",
             createdAt: "2025-06-01T00:00:00.000Z"
         };
 
         const errorScreen = document.getElementById('errorScreen');
         const galaxy = document.getElementById('galaxy');
         const sparkleBackground = document.getElementById('sparkleBackground');
+        const audio = document.getElementById('galaxyAudio');
 
         let galaxyData = demoGalaxyData;
         const activeParticles = new Set();
@@ -266,28 +279,25 @@
             `;
             document.head.appendChild(style);
 
-            initializeAudio();
             createSparkles();
             startParticleAnimation();
-        }
 
-        function initializeAudio() {
-            if (!galaxyData.song) return;
+            // Phát âm thanh khi chạm vào màn hình
+            document.body.addEventListener('touchstart', () => {
+                audio.load();
+                audio.play().catch(error => {
+                    console.error('Autoplay failed:', error);
+                    showAudioError();
+                });
+            }, { once: true });
 
-            const audio = document.getElementById('galaxyAudio');
-            audio.src = galaxyData.song.startsWith('http') ? galaxyData.song : `songs/${galaxyData.song}`;
-            audio.loop = true;
-            audio.preload = 'auto';
-            audio.volume = 0.7;
-
-            // Attempt to play audio immediately
-            audio.load();
-            audio.play().catch(error => {
-                console.error('Autoplay failed:', error);
-                showAudioError();
-            });
-
-            audio.addEventListener('error', showAudioError);
+            document.body.addEventListener('click', () => {
+                audio.load();
+                audio.play().catch(error => {
+                    console.error('Autoplay failed:', error);
+                    showAudioError();
+                });
+            }, { once: true });
         }
 
         function showAudioError() {
