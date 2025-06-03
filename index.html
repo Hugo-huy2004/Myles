@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Dải Ngân Hà Lấp Lánh - Lời Chúc Cho Myles (3D Twinkling Galaxy)</title>
+    <title>Dải Ngân Hà Lấp Lánh - Lời Chúc Cho Myles (Mobile Optimized)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -45,18 +45,17 @@
 
         .container {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            transform: translate(-50%, -50%);
             z-index: 2;
         }
 
         .text-particle {
             position: absolute;
             color: #fff;
-            font-size: 3.5vw;
+            font-size: 4vw;
             font-weight: 600;
             white-space: nowrap;
             text-shadow: 
@@ -108,7 +107,7 @@
 
         .text-particle.heart {
             color: #ff8ab5;
-            font-size: 4.5vw;
+            font-size: 5vw;
             text-shadow: 
                 0 0 20px currentColor,
                 0 0 30px currentColor,
@@ -180,19 +179,19 @@
 
         @media (max-width: 768px) {
             .text-particle {
-                font-size: 4vw;
+                font-size: 4.5vw;
             }
             .text-particle.heart {
-                font-size: 5vw;
+                font-size: 5.5vw;
             }
         }
 
         @media (max-width: 480px) {
             .text-particle {
-                font-size: 4.5vw;
+                font-size: 5vw;
             }
             .text-particle.heart {
-                font-size: 5.5vw;
+                font-size: 6vw;
             }
         }
     </style>
@@ -227,8 +226,9 @@
                 "Yêu lắm nha! 💕",
                 "Myles, em là ánh sáng trong đêm tối của anh! ✨",
                 "Chúc em luôn rạng rỡ như những vì sao! 🌌",
-                "Trọng, yêu em! ",
+                "Trọng, trái tim anh thuộc về em! 💖",
                 "Cùng em, mọi khoảnh khắc đều lung linh! 🌟",
+                "Chúc Myles mãi hạnh phúc bên anh! 😊",
                 "Em là giấc mơ ngọt ngào nhất của anh! 💕",
                 "Trọng, em làm cả vũ trụ của anh sáng lên! 🌠",
                 "Yêu em như yêu cả dải ngân hà! ❤️",
@@ -270,19 +270,19 @@
         let galaxyData = demoGalaxyData;
         const activeParticles = new Set();
 
-        const maxParticles = 100;
-        const particleInterval = 300;
-        let particleSpeedMultiplier = 0.8;
+        const maxParticles = 80; // Reduced for mobile performance
+        const particleInterval = 400; // Slower spawn rate
+        let particleSpeedMultiplier = 0.7; // Even slower falling speed
 
         // Three.js setup for twinkling 3D galaxy
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('galaxyCanvas'), alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Lower pixel ratio for mobile
 
         const starsGeometry = new THREE.BufferGeometry();
-        const starsCount = 5000;
+        const starsCount = 3000; // Reduced for performance
         const positions = new Float32Array(starsCount * 3);
         const colors = new Float32Array(starsCount * 3);
         const sizes = new Float32Array(starsCount);
@@ -290,11 +290,10 @@
 
         for (let i = 0; i < starsCount; i++) {
             const i3 = i * 3;
-            positions[i3] = (Math.random() - 0.5) * 2000;
-            positions[i3 + 1] = (Math.random() - 0.5) * 2000;
-            positions[i3 + 2] = (Math.random() - 0.5) * 2000;
+            positions[i3] = (Math.random() - 0.5) * 1500;
+            positions[i3 + 1] = (Math.random() - 0.5) * 1500;
+            positions[i3 + 2] = (Math.random() - 0.5) * 1500;
 
-            // Romantic pastel colors
             const colorChoice = Math.random();
             if (colorChoice < 0.5) {
                 colors[i3] = 1; colors[i3 + 1] = 1; colors[i3 + 2] = 1; // White
@@ -304,8 +303,8 @@
                 colors[i3] = 1; colors[i3 + 1] = 0.6; colors[i3 + 2] = 0.8; // Light pink
             }
 
-            sizes[i] = Math.random() * 2 + 1;
-            opacities[i] = Math.random() * 0.5 + 0.5;
+            sizes[i] = Math.random() * 1.5 + 0.5; // Smaller stars
+            opacities[i] = Math.random() * 0.4 + 0.4;
         }
 
         starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -331,7 +330,7 @@
                 uniform float time;
                 varying float vOpacity;
                 void main() {
-                    float twinkle = sin(time * 2.0 + vOpacity * 10.0) * 0.3 + 0.7;
+                    float twinkle = sin(time * 1.5 + vOpacity * 8.0) * 0.3 + 0.7; // Slower twinkle
                     gl_FragColor = vec4(1.0, 1.0, 1.0, vOpacity * twinkle);
                 }
             `,
@@ -341,7 +340,7 @@
 
         const starField = new THREE.Points(starsGeometry, starsMaterial);
         scene.add(starField);
-        camera.position.z = 500;
+        camera.position.z = 400; // Closer camera for mobile
 
         // 3D movement controls
         let isDraggingGalaxy = false;
@@ -361,8 +360,8 @@
                     x: e.clientX - previousMousePosition.x,
                     y: e.clientY - previousMousePosition.y
                 };
-                rotation.y += deltaMove.x * 0.002;
-                rotation.x += deltaMove.y * 0.002;
+                rotation.y += deltaMove.x * 0.0015; // Slower rotation
+                rotation.x += deltaMove.y * 0.0015;
                 previousMousePosition = { x: e.clientX, y: e.clientY };
             }
         });
@@ -385,8 +384,8 @@
                     x: e.touches[0].clientX - previousMousePosition.x,
                     y: e.touches[0].clientY - previousMousePosition.y
                 };
-                rotation.y += deltaMove.x * 0.002;
-                rotation.x += deltaMove.y * 0.002;
+                rotation.y += deltaMove.x * 0.0015;
+                rotation.x += deltaMove.y * 0.0015;
                 previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
             }
         }, { passive: false });
@@ -403,8 +402,8 @@
                     lastAlpha = e.alpha;
                     lastBeta = e.beta;
                 }
-                rotation.y += (e.alpha - lastAlpha) * 0.001;
-                rotation.x += (e.beta - lastBeta) * 0.001;
+                rotation.y += (e.alpha - lastAlpha) * 0.0008; // Slower rotation
+                rotation.x += (e.beta - lastBeta) * 0.0008;
                 lastAlpha = e.alpha;
                 lastBeta = e.beta;
             }
@@ -418,12 +417,6 @@
             renderer.render(scene, camera);
         }
         animateGalaxy();
-
-        document.addEventListener('touchmove', (e) => {
-            if (!e.target.classList.contains('text-particle') && !e.target.classList.contains('image-particle')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
 
         function initializeGalaxy() {
             const style = document.createElement('style');
@@ -470,7 +463,7 @@
                 padding: 6px 12px;
                 border-radius: 12px;
                 font-family: 'Orbitron', sans-serif;
-                font-size: 3vw;
+                font-size: 3.5vw;
             `;
             document.body.appendChild(errorDiv);
             setTimeout(() => errorDiv.remove(), 4000);
@@ -500,7 +493,7 @@
         function createTextParticle() {
             if (activeParticles.size >= maxParticles) return;
 
-            const isIcon = Math.random() > 0.8;
+            const isIcon = Math.random() > 0.85; // Less frequent icons
             const element = document.createElement('div');
             if (isIcon) {
                 element.className = 'text-particle heart';
@@ -511,23 +504,24 @@
                 element.textContent = message;
             }
 
-            const xPos = Math.random() * 100;
+            const xPos = Math.random() * window.innerWidth; // Use px for precise positioning
             const animationDuration = Math.random() * 3 + 5;
 
-            element.style.left = xPos + '%';
-            const baseFontSize = 14;
-            const fontSizeVariation = 6;
+            element.style.left = '0px'; // Initial left for transform
+            element.style.top = '0px'; // Initial top for transform
+            const baseFontSize = 12; // Smaller for mobile
+            const fontSizeVariation = 5;
             element.style.fontSize = (Math.random() * fontSizeVariation + baseFontSize) + 'px';
 
-            const depthOpacity = Math.max(0.5, Math.random());
+            const depthOpacity = Math.max(0.6, Math.random()); // Higher minimum opacity
             element.style.opacity = depthOpacity;
 
             let startTime = null;
-            let startY = -150;
-            let endY = window.innerHeight + 150;
+            let startY = -50; // Start just off-screen
+            let endY = window.innerHeight + 50;
             let isPaused = false;
             let isDragging = false;
-            let currentX = xPos / 100 * window.innerWidth;
+            let currentX = xPos;
             let currentY = startY;
 
             function animateParticle(timestamp) {
@@ -553,6 +547,7 @@
 
             element.addEventListener('mousedown', (e) => {
                 e.preventDefault();
+                e.stopPropagation(); // Prevent galaxy drag
                 isDragging = true;
                 isPaused = true;
                 element.classList.add('paused');
@@ -576,12 +571,13 @@
                 element.classList.remove('paused');
                 startTime = performance.now();
                 startY = currentY;
-                endY = window.innerHeight + 150;
+                endY = window.innerHeight + 50;
                 requestAnimationFrame(animateParticle);
             });
 
             element.addEventListener('touchstart', (e) => {
                 e.preventDefault();
+                e.stopPropagation(); // Prevent galaxy drag
                 if (e.touches.length === 1) {
                     isDragging = true;
                     isPaused = true;
@@ -608,7 +604,7 @@
                 element.classList.remove('paused');
                 startTime = performance.now();
                 startY = currentY;
-                endY = window.innerHeight + 150;
+                endY = window.innerHeight + 50;
                 requestAnimationFrame(animateParticle);
             });
 
@@ -623,23 +619,24 @@
             const img = document.createElement('img');
             img.src = galaxyData.images[Math.floor(Math.random() * galaxyData.images.length)];
             img.className = 'text-particle image-particle';
-            img.style.width = (Math.random() * 60 + 120) + 'px';
+            img.style.width = (Math.random() * 50 + 100) + 'px'; // Smaller images
             img.style.height = 'auto';
             img.style.borderRadius = '15px';
             img.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
             img.style.background = '#fff';
 
-            const xPos = Math.random() * 100;
+            const xPos = Math.random() * window.innerWidth; // Use px
             const animationDuration = Math.random() * 3 + 5;
 
-            img.style.left = xPos + '%';
+            img.style.left = '0px';
+            img.style.top = '0px';
 
             let startTime = null;
-            let startY = -150;
-            let endY = window.innerHeight + 150;
+            let startY = -50;
+            let endY = window.innerHeight + 50;
             let isPaused = false;
             let isDragging = false;
-            let currentX = xPos / 100 * window.innerWidth;
+            let currentX = xPos;
             let currentY = startY;
 
             function animateParticle(timestamp) {
@@ -665,6 +662,7 @@
 
             img.addEventListener('mousedown', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 isDragging = true;
                 isPaused = true;
                 img.classList.add('paused');
@@ -688,12 +686,13 @@
                 img.classList.remove('paused');
                 startTime = performance.now();
                 startY = currentY;
-                endY = window.innerHeight + 150;
+                endY = window.innerHeight + 50;
                 requestAnimationFrame(animateParticle);
             });
 
             img.addEventListener('touchstart', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 if (e.touches.length === 1) {
                     isDragging = true;
                     isPaused = true;
@@ -720,7 +719,7 @@
                 img.classList.remove('paused');
                 startTime = performance.now();
                 startY = currentY;
-                endY = window.innerHeight + 150;
+                endY = window.innerHeight + 50;
                 requestAnimationFrame(animateParticle);
             });
 
@@ -731,17 +730,17 @@
 
         function startParticleAnimation() {
             setInterval(() => {
-                if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.05) {
+                if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.04) { // Even less frequent images
                     createImageParticle();
                 } else {
                     createTextParticle();
                 }
             }, particleInterval);
 
-            const initialParticles = 10;
+            const initialParticles = 8; // Fewer initial particles
             for (let i = 0; i < initialParticles; i++) {
                 setTimeout(() => {
-                    if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.05) {
+                    if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.04) {
                         createImageParticle();
                     } else {
                         createTextParticle();
