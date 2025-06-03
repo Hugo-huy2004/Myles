@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Dải Ngân Hà Lấp Lánh - Lời Chúc Cho Myles (Desktop)</title>
+    <title>Dải Ngân Hà Lấp Lánh - Lời Chúc Cho Myles (3D Twinkling Galaxy)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -31,35 +30,17 @@
         }
 
         body {
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #000000 100%);
             font-family: 'Orbitron', 'Courier New', monospace;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .sparkle-background {
+        #galaxyCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent;
             z-index: 1;
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            animation: sparkle 2.5s infinite ease-in-out;
-            will-change: opacity, transform;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.3); }
         }
 
         .container {
@@ -75,76 +56,76 @@
         .text-particle {
             position: absolute;
             color: #fff;
-            font-size: 18px;
+            font-size: 3.5vw;
             font-weight: 600;
             white-space: nowrap;
             text-shadow: 
-                0 0 12px currentColor,
-                0 0 24px currentColor,
-                0 0 36px currentColor,
-                2px 2px 4px rgba(0,0,0,0.8);
+                0 0 10px currentColor,
+                0 0 20px currentColor,
+                0 0 30px currentColor,
+                1px 1px 3px rgba(0,0,0,0.7);
             cursor: pointer;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             will-change: transform, opacity;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
 
         .text-particle.love {
-            color: #ff6b9d;
+            color: #ff8ab5;
             text-shadow: 
-                0 0 18px currentColor,
-                0 0 30px currentColor,
-                0 0 42px currentColor,
-                2px 2px 6px rgba(0,0,0,0.9);
+                0 0 15px currentColor,
+                0 0 25px currentColor,
+                0 0 35px currentColor,
+                1px 1px 4px rgba(0,0,0,0.8);
         }
 
         .text-particle.birthday {
-            color: #4ecdc4;
+            color: #5edcd4;
             text-shadow: 
-                0 0 18px currentColor,
-                0 0 30px currentColor,
-                0 0 42px currentColor,
-                2px 2px 6px rgba(0,0,0,0.9);
+                0 0 15px currentColor,
+                0 0 25px currentColor,
+                0 0 35px currentColor,
+                1px 1px 4px rgba(0,0,0,0.8);
         }
 
         .text-particle.date {
-            color: #c534ed;
+            color: #d854f0;
             text-shadow: 
-                0 0 24px currentColor,
-                0 0 36px currentColor,
-                0 0 48px currentColor,
-                2px 2px 6px rgba(0,0,0,0.9);
+                0 0 20px currentColor,
+                0 0 30px currentColor,
+                0 0 40px currentColor,
+                1px 1px 4px rgba(0,0,0,0.8);
         }
 
         .text-particle.special {
-            color: #f34bce;
+            color: #ff8ab5;
             text-shadow: 
-                0 0 18px currentColor,
-                0 0 30px currentColor,
-                0 0 42px currentColor,
-                2px 2px 6px rgba(0,0,0,0.9);
+                0 0 15px currentColor,
+                0 0 25px currentColor,
+                0 0 35px currentColor,
+                1px 1px 4px rgba(0,0,0,0.8);
         }
 
         .text-particle.heart {
-            color: #ff69b4;
-            font-size: 22px;
+            color: #ff8ab5;
+            font-size: 4.5vw;
             text-shadow: 
-                0 0 24px currentColor,
-                0 0 36px currentColor,
-                0 0 48px currentColor,
-                3px 3px 8px rgba(0,0,0,0.9);
+                0 0 20px currentColor,
+                0 0 30px currentColor,
+                0 0 40px currentColor,
+                2px 2px 5px rgba(0,0,0,0.8);
         }
 
         .text-particle.paused, .image-particle.paused {
-            transform: scale(1.3);
+            transform: scale(1.2);
             opacity: 1 !important;
             z-index: 20;
-            animation: glow 1.5s ease-in-out infinite;
+            animation: glow 2s ease-in-out infinite;
         }
 
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 18px currentColor, 0 0 30px currentColor, 0 0 42px currentColor, 2px 2px 6px rgba(0,0,0,0.9); }
-            50% { text-shadow: 0 0 24px currentColor, 0 0 40px currentColor, 0 0 54px currentColor, 3px 3px 8px rgba(0,0,0,0.9); }
+            0%, 100% { text-shadow: 0 0 15px currentColor, 0 0 25px currentColor, 0 0 35px currentColor, 1px 1px 4px rgba(0,0,0,0.8); }
+            50% { text-shadow: 0 0 20px currentColor, 0 0 35px currentColor, 0 0 45px currentColor, 2px 2px 5px rgba(0,0,0,0.8); }
         }
 
         .image-particle {
@@ -152,9 +133,9 @@
             cursor: pointer;
             will-change: transform, opacity;
             z-index: 12;
-            border-radius: 20px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
 
         .error-screen {
@@ -176,29 +157,48 @@
         }
 
         .error-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
 
         .back-home {
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #ff8ab5, #5edcd4);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 40px;
             font-weight: 700;
+            font-size: 3.5vw;
             transition: all 0.3s ease;
         }
 
         .back-home:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .text-particle {
+                font-size: 4vw;
+            }
+            .text-particle.heart {
+                font-size: 5vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-particle {
+                font-size: 4.5vw;
+            }
+            .text-particle.heart {
+                font-size: 5.5vw;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sparkle-background" id="sparkleBackground"></div>
+    <canvas id="galaxyCanvas"></canvas>
     <div class="error-screen" id="errorScreen">
         <div class="error-icon">😢</div>
         <h2>Không tìm thấy website</h2>
@@ -210,6 +210,7 @@
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script type="module">
         const demoGalaxyData = {
             messages: [
@@ -224,15 +225,23 @@
                 "Anh 2 luôn yêu Trọng",
                 "Hugo vẫn luôn bên cạnh em!",
                 "Yêu lắm nha! 💕",
-
+                "Myles, em là ánh sáng trong đêm tối của anh! ✨",
+                "Chúc em luôn rạng rỡ như những vì sao! 🌌",
+                "Trọng, yêu em! ",
+                "Cùng em, mọi khoảnh khắc đều lung linh! 🌟",
+                "Em là giấc mơ ngọt ngào nhất của anh! 💕",
+                "Trọng, em làm cả vũ trụ của anh sáng lên! 🌠",
+                "Yêu em như yêu cả dải ngân hà! ❤️",
+                "Chúc em luôn tỏa sáng trong lòng anh! ✨",
+                "Myles, mãi mãi là ngôi sao của anh! 🌟"
             ],
             icons: ["♥", "💖", "🌟", "😊", "❤️"],
             colors: {
-                love: "#ff6b9d",
-                birthday: "#4ecdc4",
-                date: "#ff69b4",
-                special: "#ff6b9d",
-                heart: "#ff69b4"
+                love: "#ff8ab5",
+                birthday: "#5edcd4",
+                date: "#d854f0",
+                special: "#ff8ab5",
+                heart: "#ff8ab5"
             },
             images: [
                 "image/1.png",
@@ -256,35 +265,179 @@
 
         const errorScreen = document.getElementById('errorScreen');
         const galaxy = document.getElementById('galaxy');
-        const sparkleBackground = document.getElementById('sparkleBackground');
         const audio = document.getElementById('galaxyAudio');
 
         let galaxyData = demoGalaxyData;
         const activeParticles = new Set();
 
-        const maxParticles = 300;
-        const particleInterval = 120;
-        const sparkleCount = 600;
+        const maxParticles = 100;
+        const particleInterval = 300;
+        let particleSpeedMultiplier = 0.8;
 
-        let particleSpeedMultiplier = 1.3;
+        // Three.js setup for twinkling 3D galaxy
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('galaxyCanvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsCount = 5000;
+        const positions = new Float32Array(starsCount * 3);
+        const colors = new Float32Array(starsCount * 3);
+        const sizes = new Float32Array(starsCount);
+        const opacities = new Float32Array(starsCount);
+
+        for (let i = 0; i < starsCount; i++) {
+            const i3 = i * 3;
+            positions[i3] = (Math.random() - 0.5) * 2000;
+            positions[i3 + 1] = (Math.random() - 0.5) * 2000;
+            positions[i3 + 2] = (Math.random() - 0.5) * 2000;
+
+            // Romantic pastel colors
+            const colorChoice = Math.random();
+            if (colorChoice < 0.5) {
+                colors[i3] = 1; colors[i3 + 1] = 1; colors[i3 + 2] = 1; // White
+            } else if (colorChoice < 0.8) {
+                colors[i3] = 0.6; colors[i3 + 1] = 0.8; colors[i3 + 2] = 1; // Light blue
+            } else {
+                colors[i3] = 1; colors[i3 + 1] = 0.6; colors[i3 + 2] = 0.8; // Light pink
+            }
+
+            sizes[i] = Math.random() * 2 + 1;
+            opacities[i] = Math.random() * 0.5 + 0.5;
+        }
+
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        starsGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        starsGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+        starsGeometry.setAttribute('opacity', new THREE.BufferAttribute(opacities, 1));
+
+        const starsMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0 }
+            },
+            vertexShader: `
+                attribute float size;
+                attribute float opacity;
+                varying float vOpacity;
+                void main() {
+                    vOpacity = opacity;
+                    gl_PointSize = size;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform float time;
+                varying float vOpacity;
+                void main() {
+                    float twinkle = sin(time * 2.0 + vOpacity * 10.0) * 0.3 + 0.7;
+                    gl_FragColor = vec4(1.0, 1.0, 1.0, vOpacity * twinkle);
+                }
+            `,
+            transparent: true,
+            vertexColors: true
+        });
+
+        const starField = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starField);
+        camera.position.z = 500;
+
+        // 3D movement controls
+        let isDraggingGalaxy = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotation = { x: 0, y: 0 };
+
+        document.addEventListener('mousedown', (e) => {
+            if (!e.target.classList.contains('text-particle') && !e.target.classList.contains('image-particle')) {
+                isDraggingGalaxy = true;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDraggingGalaxy) {
+                const deltaMove = {
+                    x: e.clientX - previousMousePosition.x,
+                    y: e.clientY - previousMousePosition.y
+                };
+                rotation.y += deltaMove.x * 0.002;
+                rotation.x += deltaMove.y * 0.002;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDraggingGalaxy = false;
+        });
+
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1 && !e.target.classList.contains('text-particle') && !e.target.classList.contains('image-particle')) {
+                isDraggingGalaxy = true;
+                previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchmove', (e) => {
+            if (isDraggingGalaxy && e.touches.length === 1) {
+                e.preventDefault();
+                const deltaMove = {
+                    x: e.touches[0].clientX - previousMousePosition.x,
+                    y: e.touches[0].clientY - previousMousePosition.y
+                };
+                rotation.y += deltaMove.x * 0.002;
+                rotation.x += deltaMove.y * 0.002;
+                previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', () => {
+            isDraggingGalaxy = false;
+        });
+
+        // Device orientation for mobile
+        let lastAlpha = null, lastBeta = null;
+        window.addEventListener('deviceorientation', (e) => {
+            if (e.alpha !== null && e.beta !== null) {
+                if (lastAlpha === null) {
+                    lastAlpha = e.alpha;
+                    lastBeta = e.beta;
+                }
+                rotation.y += (e.alpha - lastAlpha) * 0.001;
+                rotation.x += (e.beta - lastBeta) * 0.001;
+                lastAlpha = e.alpha;
+                lastBeta = e.beta;
+            }
+        });
+
+        function animateGalaxy() {
+            requestAnimationFrame(animateGalaxy);
+            starsMaterial.uniforms.time.value += 0.01;
+            starField.rotation.y = rotation.y;
+            starField.rotation.x = rotation.x;
+            renderer.render(scene, camera);
+        }
+        animateGalaxy();
+
+        document.addEventListener('touchmove', (e) => {
+            if (!e.target.classList.contains('text-particle') && !e.target.classList.contains('image-particle')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         function initializeGalaxy() {
             const style = document.createElement('style');
             style.textContent = `
-                .text-particle.love { color: ${galaxyData.colors.love}; text-shadow: 0 0 18px ${galaxyData.colors.love}, 0 0 30px ${galaxyData.colors.love}, 0 0 42px ${galaxyData.colors.love}, 2px 2px 6px rgba(0,0,0,0.9); }
-                .text-particle.birthday { color: ${galaxyData.colors.birthday}; text-shadow: 0 0 18px ${galaxyData.colors.birthday}, 0 0 30px ${galaxyData.colors.birthday}, 0 0 42px ${galaxyData.colors.birthday}, 2px 2px 6px rgba(0,0,0,0.9); }
-                .text-particle.date { color: ${galaxyData.colors.date}; text-shadow: 0 0 24px ${galaxyData.colors.date}, 0 0 36px ${galaxyData.colors.date}, 0 0 48px ${galaxyData.colors.date}, 2px 2px 6px rgba(0,0,0,0.9); }
-                .text-particle.special { color: ${galaxyData.colors.special}; text-shadow: 0 0 18px ${galaxyData.colors.special}, 0 0 30px ${galaxyData.colors.special}, 0 0 42px ${galaxyData.colors.special}, 2px 2px 6px rgba(0,0,0,0.9); }
-                .text-particle.heart { color: ${galaxyData.colors.heart}; text-shadow: 0 0 24px ${galaxyData.colors.heart}, 0 0 36px ${galaxyData.colors.heart}, 0 0 48px ${galaxyData.colors.heart}, 3px 3px 8px rgba(0,0,0,0.9); }
+                .text-particle.love { color: ${galaxyData.colors.love}; text-shadow: 0 0 15px ${galaxyData.colors.love}, 0 0 25px ${galaxyData.colors.love}, 0 0 35px ${galaxyData.colors.love}, 1px 1px 4px rgba(0,0,0,0.8); }
+                .text-particle.birthday { color: ${galaxyData.colors.birthday}; text-shadow: 0 0 15px ${galaxyData.colors.birthday}, 0 0 25px ${galaxyData.colors.birthday}, 0 0 35px ${galaxyData.colors.birthday}, 1px 1px 4px rgba(0,0,0,0.8); }
+                .text-particle.date { color: ${galaxyData.colors.date}; text-shadow: 0 0 20px ${galaxyData.colors.date}, 0 0 30px ${galaxyData.colors.date}, 0 0 40px ${galaxyData.colors.date}, 1px 1px 4px rgba(0,0,0,0.8); }
+                .text-particle.special { color: ${galaxyData.colors.special}; text-shadow: 0 0 15px ${galaxyData.colors.special}, 0 0 25px ${galaxyData.colors.special}, 0 0 35px ${galaxyData.colors.special}, 1px 1px 4px rgba(0,0,0,0.8); }
+                .text-particle.heart { color: ${galaxyData.colors.heart}; text-shadow: 0 0 20px ${galaxyData.colors.heart}, 0 0 30px ${galaxyData.colors.heart}, 0 0 40px ${galaxyData.colors.heart}, 2px 2px 5px rgba(0,0,0,0.8); }
             `;
             document.head.appendChild(style);
 
-            createSparkles();
             startParticleAnimation();
 
-            // Phát âm thanh khi chạm vào màn hình
             document.body.addEventListener('touchstart', () => {
                 audio.load();
                 audio.play().catch(error => {
@@ -308,30 +461,19 @@
             errorDiv.innerHTML = '✧ Lỗi phát nhạc';
             errorDiv.style.cssText = `
                 position: fixed;
-                top: 20px;
+                top: 15px;
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 1000;
-                background: rgba(255, 71, 87, 0.9);
+                background: rgba(255, 71, 87, 0.8);
                 color: white;
-                padding: 8px 16px;
-                border-radius: 15px;
+                padding: 6px 12px;
+                border-radius: 12px;
                 font-family: 'Orbitron', sans-serif;
-                font-size: 12px;
+                font-size: 3vw;
             `;
             document.body.appendChild(errorDiv);
-            setTimeout(() => errorDiv.remove(), 5000);
-        }
-
-        function createSparkles() {
-            for (let i = 0; i < sparkleCount; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = `${Math.random() * 100}%`;
-                sparkle.style.top = `${Math.random() * 100}%`;
-                sparkle.style.animationDelay = `${Math.random() * 2.5}s`;
-                sparkleBackground.appendChild(sparkle);
-            }
+            setTimeout(() => errorDiv.remove(), 4000);
         }
 
         function getRandomMessage() {
@@ -358,7 +500,7 @@
         function createTextParticle() {
             if (activeParticles.size >= maxParticles) return;
 
-            const isIcon = Math.random() > 0.7;
+            const isIcon = Math.random() > 0.8;
             const element = document.createElement('div');
             if (isIcon) {
                 element.className = 'text-particle heart';
@@ -370,32 +512,35 @@
             }
 
             const xPos = Math.random() * 100;
-            const animationDuration = Math.random() * 2 + 3;
+            const animationDuration = Math.random() * 3 + 5;
 
             element.style.left = xPos + '%';
-            const baseFontSize = 18;
-            const fontSizeVariation = 8;
+            const baseFontSize = 14;
+            const fontSizeVariation = 6;
             element.style.fontSize = (Math.random() * fontSizeVariation + baseFontSize) + 'px';
 
-            const depthOpacity = Math.max(0.4, Math.random());
+            const depthOpacity = Math.max(0.5, Math.random());
             element.style.opacity = depthOpacity;
 
             let startTime = null;
             let startY = -150;
             let endY = window.innerHeight + 150;
             let isPaused = false;
+            let isDragging = false;
+            let currentX = xPos / 100 * window.innerWidth;
+            let currentY = startY;
 
             function animateParticle(timestamp) {
-                if (isPaused) return;
+                if (isPaused || isDragging) return;
                 if (!startTime) startTime = timestamp;
                 const progress = (timestamp - startTime) / (animationDuration * 1000 * particleSpeedMultiplier);
 
                 if (progress < 1) {
-                    const currentY = startY + (endY - startY) * progress;
+                    currentY = startY + (endY - startY) * progress;
                     const opacity = progress < 0.05 ? progress * 20 : 
                                     progress > 0.95 ? (1 - progress) * 20 : 
                                     depthOpacity;
-                    element.style.transform = `translate3d(0, ${currentY}px, 0)`;
+                    element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
                     element.style.opacity = opacity;
                     requestAnimationFrame(animateParticle);
                 } else {
@@ -408,27 +553,62 @@
 
             element.addEventListener('mousedown', (e) => {
                 e.preventDefault();
+                isDragging = true;
                 isPaused = true;
                 element.classList.add('paused');
+                currentX = e.clientX - (element.offsetWidth / 2);
+                currentY = e.clientY - (element.offsetHeight / 2);
+                element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+            });
+
+            element.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    currentX = e.clientX - (element.offsetWidth / 2);
+                    currentY = e.clientY - (element.offsetHeight / 2);
+                    element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                    element.style.opacity = 1;
+                }
             });
 
             element.addEventListener('mouseup', () => {
+                isDragging = false;
                 isPaused = false;
                 element.classList.remove('paused');
                 startTime = performance.now();
+                startY = currentY;
+                endY = window.innerHeight + 150;
                 requestAnimationFrame(animateParticle);
             });
 
             element.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                isPaused = true;
-                element.classList.add('paused');
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    isPaused = true;
+                    element.classList.add('paused');
+                    currentX = e.touches[0].clientX - (element.offsetWidth / 2);
+                    currentY = e.touches[0].clientY - (element.offsetHeight / 2);
+                    element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                }
+            }, { passive: false });
+
+            element.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length === 1) {
+                    e.preventDefault();
+                    currentX = e.touches[0].clientX - (element.offsetWidth / 2);
+                    currentY = e.touches[0].clientY - (element.offsetHeight / 2);
+                    element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                    element.style.opacity = 1;
+                }
             }, { passive: false });
 
             element.addEventListener('touchend', () => {
+                isDragging = false;
                 isPaused = false;
                 element.classList.remove('paused');
                 startTime = performance.now();
+                startY = currentY;
+                endY = window.innerHeight + 150;
                 requestAnimationFrame(animateParticle);
             });
 
@@ -443,14 +623,14 @@
             const img = document.createElement('img');
             img.src = galaxyData.images[Math.floor(Math.random() * galaxyData.images.length)];
             img.className = 'text-particle image-particle';
-            img.style.width = (Math.random() * 80 + 160) + 'px';
+            img.style.width = (Math.random() * 60 + 120) + 'px';
             img.style.height = 'auto';
-            img.style.borderRadius = '20px';
-            img.style.boxShadow = '0 6px 30px rgba(0,0,0,0.3)';
+            img.style.borderRadius = '15px';
+            img.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
             img.style.background = '#fff';
 
             const xPos = Math.random() * 100;
-            const animationDuration = Math.random() * 2 + 3;
+            const animationDuration = Math.random() * 3 + 5;
 
             img.style.left = xPos + '%';
 
@@ -458,18 +638,21 @@
             let startY = -150;
             let endY = window.innerHeight + 150;
             let isPaused = false;
+            let isDragging = false;
+            let currentX = xPos / 100 * window.innerWidth;
+            let currentY = startY;
 
             function animateParticle(timestamp) {
-                if (isPaused) return;
+                if (isPaused || isDragging) return;
                 if (!startTime) startTime = timestamp;
                 const progress = (timestamp - startTime) / (animationDuration * 1000 * particleSpeedMultiplier);
 
                 if (progress < 1) {
-                    const currentY = startY + (endY - startY) * progress;
+                    currentY = startY + (endY - startY) * progress;
                     const opacity = progress < 0.05 ? progress * 20 :
                                    progress > 0.95 ? (1 - progress) * 20 :
                                    1;
-                    img.style.transform = `translate3d(0, ${currentY}px, 0)`;
+                    img.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
                     img.style.opacity = opacity;
                     requestAnimationFrame(animateParticle);
                 } else {
@@ -482,27 +665,62 @@
 
             img.addEventListener('mousedown', (e) => {
                 e.preventDefault();
+                isDragging = true;
                 isPaused = true;
                 img.classList.add('paused');
+                currentX = e.clientX - (img.offsetWidth / 2);
+                currentY = e.clientY - (img.offsetHeight / 2);
+                img.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+            });
+
+            img.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    currentX = e.clientX - (img.offsetWidth / 2);
+                    currentY = e.clientY - (img.offsetHeight / 2);
+                    img.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                    img.style.opacity = 1;
+                }
             });
 
             img.addEventListener('mouseup', () => {
+                isDragging = false;
                 isPaused = false;
                 img.classList.remove('paused');
                 startTime = performance.now();
+                startY = currentY;
+                endY = window.innerHeight + 150;
                 requestAnimationFrame(animateParticle);
             });
 
             img.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                isPaused = true;
-                img.classList.add('paused');
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    isPaused = true;
+                    img.classList.add('paused');
+                    currentX = e.touches[0].clientX - (img.offsetWidth / 2);
+                    currentY = e.touches[0].clientY - (img.offsetHeight / 2);
+                    img.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                }
+            }, { passive: false });
+
+            img.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length === 1) {
+                    e.preventDefault();
+                    currentX = e.touches[0].clientX - (img.offsetWidth / 2);
+                    currentY = e.touches[0].clientY - (img.offsetHeight / 2);
+                    img.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                    img.style.opacity = 1;
+                }
             }, { passive: false });
 
             img.addEventListener('touchend', () => {
+                isDragging = false;
                 isPaused = false;
                 img.classList.remove('paused');
                 startTime = performance.now();
+                startY = currentY;
+                endY = window.innerHeight + 150;
                 requestAnimationFrame(animateParticle);
             });
 
@@ -513,22 +731,22 @@
 
         function startParticleAnimation() {
             setInterval(() => {
-                if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.08) {
+                if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.05) {
                     createImageParticle();
                 } else {
                     createTextParticle();
                 }
             }, particleInterval);
 
-            const initialParticles = 15;
+            const initialParticles = 10;
             for (let i = 0; i < initialParticles; i++) {
                 setTimeout(() => {
-                    if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.08) {
+                    if (galaxyData.images && galaxyData.images.length > 0 && Math.random() < 0.05) {
                         createImageParticle();
                     } else {
                         createTextParticle();
                     }
-                }, i * (particleInterval * 0.6));
+                }, i * (particleInterval * 0.8));
             }
         }
 
@@ -536,6 +754,12 @@
             setTimeout(() => {
                 location.reload();
             }, 100);
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
         initializeGalaxy();
